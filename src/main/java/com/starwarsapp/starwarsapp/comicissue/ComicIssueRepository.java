@@ -14,14 +14,25 @@ import java.util.Optional;
 @Repository
 public interface ComicIssueRepository extends JpaRepository<ComicIssue, Long> {
 
-    // SELECT * FROM starwars WHERE title = title;
-    // Can also annotate with "Query" annotator
-    Optional<ComicIssue> findComicIssueByTitle(String title);
-
-    @Query(value = "SELECT * FROM starwars.comic_issue WHERE release_date > :releaseDate ORDER BY release_date", nativeQuery = true)
+    @Query(value = "SELECT * " +
+                    "FROM starwars.comic_issue " +
+                    "WHERE release_date > :releaseDate " +
+                    "ORDER BY release_date",
+                    nativeQuery = true)
     Collection<ComicIssue> findFutureComicIssuesFromDate(@Param("releaseDate") LocalDate releaseDate);
 
-    @Query(value = "SELECT * FROM starwars.comic_issue WHERE release_date > :firstDay && release_date < :lastDay order by release_date ;", nativeQuery = true)
+
+    @Query(value = "SELECT * " +
+                    "FROM starwars.comic_issue " +
+                    "WHERE release_date > :firstDay && release_date < :lastDay order by release_date ;",
+                    nativeQuery = true)
     Collection<ComicIssue> getFutureComicIssuesByMonth(@Param("firstDay") LocalDate firstDay,
                                                        @Param("lastDay") LocalDate lastDay);
+
+
+
+
+    @Query(value = "SELECT id, author, image_url, in_collection, MAX(issue_number) AS issue_number, release_date, title FROM starwars.comic_issue GROUP BY title;", nativeQuery = true)
+    Collection<ComicIssue> getLatestUnreleasedIssues();
+
 }

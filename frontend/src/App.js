@@ -2,12 +2,15 @@ import './App.css';
 import NavBar from './Components/NavBar/NavBar.jsx';
 // import PageHeader from './Components/PageHeader/PageHeader';
 import MainSection from './Components/MainSection/MainSection';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <div>
-        <NavBar/>
-        <MainSection/>
+        <BrowserRouter>
+            <NavBar/>
+            <MainSection/>
+        </BrowserRouter>
     </div>
   );
 }

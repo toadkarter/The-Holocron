@@ -22,7 +22,7 @@ public class ComicIssue {
 
     private int id;
     private String title;
-    private int number;
+    private int issueNumber;
     private String author;
     private LocalDate releaseDate;
     private String imageUrl;
@@ -33,9 +33,9 @@ public class ComicIssue {
     }
 
     // Constructor without id (for database generation)
-    public ComicIssue(String title, int number, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
+    public ComicIssue(String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
         this.title = title;
-        this.number = number;
+        this.issueNumber = issueNumber;
         this.author = author;
         this.releaseDate = releaseDate;
         this.imageUrl = imageUrl;
@@ -43,10 +43,10 @@ public class ComicIssue {
     }
 
     // Full constructor (for user input)
-    public ComicIssue(int id, String title, int number, String author, LocalDate releaseDate, String image, boolean inCollection) {
+    public ComicIssue(int id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
         this.id = id;
         this.title = title;
-        this.number = number;
+        this.issueNumber = issueNumber;
         this.author = author;
         this.releaseDate = releaseDate;
         this.imageUrl = imageUrl;
@@ -69,12 +69,12 @@ public class ComicIssue {
         this.title = title;
     }
 
-    public int getNumber() {
-        return number;
+    public int getIssueNumber() {
+        return issueNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setIssueNumber(int number) {
+        this.issueNumber = number;
     }
 
     public LocalDate getReleaseDate() {

@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 function NavButtonContainer() {
   return (
       <NavButtonContainerStyles>
-        <BrowserRouter>
+        {/* Consider looping through these instead */}
             <Link to={'/new_releases'}>
                 <NavButton title='NEW RELEASES'/>
             </Link>
@@ -17,7 +17,7 @@ function NavButtonContainer() {
             <Link to={'/view_collection'}>
                 <NavButton title='VIEW COLLECTION'/>
             </Link>
-        </BrowserRouter>
+
     </NavButtonContainerStyles>
   );
 }

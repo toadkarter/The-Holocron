@@ -3,10 +3,7 @@ import styled from 'styled-components';
 
 
 function NavButton(props) {
-  return (
-    
-    <NavButtonStyled>{props.title}</NavButtonStyled>
-  );
+  return (<NavButtonStyled>{props.title}</NavButtonStyled>);
 }
 
 const NavButtonStyled = styled.p`

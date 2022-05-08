@@ -22,22 +22,11 @@ public class ComicIssueController {
         this.comicIssueService = comicIssueService;
     }
 
-    @GetMapping
-    public List<ComicIssue> getAllIssues() {
-        return comicIssueService.getAllIssues();
-    }
-
     @RequestMapping(value="/month")
     public Collection<ComicIssue> getFutureComicIssuesByMonth(@RequestParam(value = "month") int month) {
         return comicIssueService.getFutureComicIssuesByMonth(month);
 
     }
-
-
-
-
-
-
 
     @GetMapping(path = "date")
     public Collection<ComicIssue> findFutureComicIssuesFromDate(@RequestParam("date")
@@ -45,38 +34,15 @@ public class ComicIssueController {
         return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
     }
 
+    @GetMapping(path = "latest")
+    public Collection<ComicIssue> getLatestUnreleasedIssues() {
+        return comicIssueService.getLatestUnreleasedIssues();
+    }
 
-
-
-
-
-
-
-
-
-
-    @RequestMapping(path="initfuturecomics")
+    @RequestMapping(path = "initfuturecomics")
     public void initFutureComics() throws IOException {
         comicIssueService.initFutureComics();
     }
 
-    @PostMapping
-    public void registerNewComicIssue(@RequestBody ComicIssue comicIssue) {
-        comicIssueService.addNewComicIssue(comicIssue);
-    }
-
-    @DeleteMapping(path = "{comicIssueId}")
-    public void deleteComicIssue(@PathVariable("comicIssueId") Long comicIssueId) {
-        comicIssueService.deleteComicIssue(comicIssueId);
-    }
-
-    @PutMapping(path = "{comicIssueId}")
-    public void updateComicIssue(
-            @PathVariable("comicIssueId") Long comicIssueId,
-            @RequestParam(required = false) String title,
-            @RequestParam(required = false) int number,
-            @RequestParam(required = false) String author) {
-        comicIssueService.updateComicIssue(comicIssueId, title, number, author);
-    }
 
 }
