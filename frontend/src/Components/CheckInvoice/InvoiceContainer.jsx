@@ -45,8 +45,6 @@ function InvoiceContainer() {
     );
 }
 
-// Note: Consider making this one of those slidy things
-
 const HelperText = styled.div`
   margin: 2%;
   display: flex;

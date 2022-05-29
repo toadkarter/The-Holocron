@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import ComicCardContainer from './NewReleases/ComicCardContainer';
 import InvoiceContainer from './CheckInvoice/InvoiceContainer';
 import PageHeader from './PageHeader';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import {Navigate, Route, Routes, useLocation} from 'react-router-dom';
 
 
 function MainSection() {
@@ -11,6 +10,12 @@ function MainSection() {
   useLocation();
   return (
       <Routes>
+          <Route path={"/"} element={
+              <>
+                <Navigate to={"/new_releases"}/>
+              </>
+          }/>
+
           <Route path={'/new_releases'} element={
             <>
                 <PageHeader title="newReleases"/>

@@ -49,7 +49,6 @@ function ComicCardContainer() {
   );
 }
 
-// Note: Consider making this one of those slidy things
 const ComicCardContainerStyles = styled.div`
     margin: 2%;
     display: flex;
