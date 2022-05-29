@@ -1,5 +1,5 @@
 import React from 'react';
-import ComicCard from '../ComicCard/ComicCard';
+import ComicCard from './ComicCard';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
@@ -14,7 +14,7 @@ function ComicCardContainer() {
   },[]);
 
   const getComicIssues = async () => {
-    const api = await fetch("http://localhost:8080/api/v1/comicissue/month?month=5");
+    const api = await fetch("http://localhost:8080/api/v1/comicissue/month?month=6");
     
     // This will create a json file from the api call
     const data = await api.json();

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ComicCardText from '../ComicCardText/ComicCardText';
+import ComicCardText from './ComicCardText';
 
 function ComicCard(props) {
 

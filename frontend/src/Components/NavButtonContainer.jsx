@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavButton from '../NavButton/NavButton.jsx'
+import NavButton from './NavButton.jsx'
 import { Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 

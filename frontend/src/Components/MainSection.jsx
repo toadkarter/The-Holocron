@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ComicCardContainer from '../ComicCardContainer/ComicCardContainer';
-import InvoiceContainer from '../InvoiceContainer/InvoiceContainer';
-import PageHeader from '../PageHeader/PageHeader';
+import ComicCardContainer from './ComicCardContainer';
+import InvoiceContainer from './InvoiceContainer';
+import PageHeader from './PageHeader';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 

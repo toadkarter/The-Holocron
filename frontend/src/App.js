@@ -1,7 +1,7 @@
 import './App.css';
-import NavBar from './Components/NavBar/NavBar.jsx';
+import NavBar from './Components/NavBar.jsx';
 // import PageHeader from './Components/PageHeader/PageHeader';
-import MainSection from './Components/MainSection/MainSection';
+import MainSection from './Components/MainSection';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {

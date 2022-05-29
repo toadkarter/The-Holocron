@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import InvoiceContainerCard from '../InvoiceContainerCard/InvoiceContainerCard';
+import InvoiceContainerCard from './InvoiceContainerCard';
 
 
 function InvoiceContainer() {

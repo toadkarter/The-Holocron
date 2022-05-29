@@ -6,30 +6,23 @@ import { useEffect, useState } from 'react';
 function InvoiceContainerCard() {
   const [latestIssues, setlatestIssues] = useState([]);
   const [maxIssueNumber, setMaxIssueNumber] = useState(0);
-
-  useEffect(() => {
-  getLatestIssues();
-  },[]);
+  useEffect(() => { getLatestIssues(); },[]);
 
 
   const generateNumberDropdown = () => {
     const issueNumbers = [...Array(maxIssueNumber).keys()];
     const issueNumbersOptions = issueNumbers.map((issueNumber) => 
-    
         <option key={issueNumber+1} value = {issueNumber+1}>
           {issueNumber+1}
         </option>)
-
     return issueNumbersOptions;
   }
 
   const generateTitleDropdown = () => {
     const issueTitles = latestIssues.map((latestIssue) => 
-
       <option key={latestIssue.id} value = {latestIssue.issueNumber}>
         {latestIssue.title}
       </option>)
-    
     return issueTitles;
   }
 
@@ -39,7 +32,6 @@ function InvoiceContainerCard() {
     setlatestIssues(data);
   }
 
-
   return (
   <InvoiceContainerCardStyled>
     <select name="Title" onChange={(e)=> {setMaxIssueNumber(parseInt(e.target.value))}}>
@@ -48,12 +40,14 @@ function InvoiceContainerCard() {
     <select name="IssueNumber">
       {generateNumberDropdown()}
     </select>
-  </InvoiceContainerCardStyled>);
+  </InvoiceContainerCardStyled>
+  );
 }
 
 const InvoiceContainerCardStyled = styled.div`
     align-self: flex-start;
     background-color: #EB3D54;
+    border: 1px solid red;
     color: white;
     padding: .2rem;
     border-radius: 30px;
@@ -68,7 +62,11 @@ const InvoiceContainerCardStyled = styled.div`
 
     }
     option {
-      background-color: white;
+      font-size: 1rem;
+    }
+
+    select {
+      font-size: 1rem;
     }
 `
 export default InvoiceContainerCard;
