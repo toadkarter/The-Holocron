@@ -9,7 +9,7 @@ function InvoiceContainer() {
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 
     // const blah = new Date().toISOString().split("T")[0];
-    useEffect(() => { getComicIssues(date); },[""]);
+    useEffect(() => { getComicIssues(date); },[date]);
 
     const getComicIssues = async (date) => {
         const api = await fetch(`http://localhost:8080/api/v1/comicissue/date?date=${date}`);
@@ -19,13 +19,13 @@ function InvoiceContainer() {
 
         localStorage.setItem('comicIssues', JSON.stringify(data));
 
+        console.log(data.length)
         // This will put in the relevant data from the JSON file into the popular variable.
         setComicIssues(data);
     }
 
     const dateChangeHandler = (e) => {
         setDate(e.target.value);
-        getComicIssues(e.target.value);
     }
 
     return (

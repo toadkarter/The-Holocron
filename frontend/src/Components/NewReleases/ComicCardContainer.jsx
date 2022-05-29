@@ -14,7 +14,7 @@ function ComicCardContainer() {
     return currentDate.split("-").slice(0, 2).join("-");
   });
 
-  useEffect(() => { getComicIssues(month); },[]);
+  useEffect(() => { getComicIssues(month); },[month]);
 
   const getComicIssues = async (month) => {
     const api = await fetch(`http://localhost:8080/api/v1/comicissue/month?month=${month}`);
@@ -30,7 +30,6 @@ function ComicCardContainer() {
 
   const monthChangeHandler = (e) => {
     setMonth(e.target.value);
-    getComicIssues(e.target.value);
   }
 
   return (
