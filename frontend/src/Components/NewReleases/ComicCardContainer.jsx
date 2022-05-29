@@ -28,6 +28,7 @@ function ComicCardContainer() {
 
   return (
     <ComicCardContainerStyles>
+      <input type={"month"} value={month}></input>
       {comicIssues.map((issue) => {
       return (
           <ComicCard issue={issue}/>
