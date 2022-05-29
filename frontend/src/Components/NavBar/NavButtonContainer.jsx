@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import NavButton from './NavButton.jsx'
 import { Link } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 
 function NavButtonContainer() {
   return (
@@ -13,9 +12,6 @@ function NavButtonContainer() {
             </Link>
             <Link to={'/check_invoice'}>
                 <NavButton title='CHECK INVOICE'/>
-            </Link>
-            <Link to={'/view_collection'}>
-                <NavButton title='VIEW COLLECTION'/>
             </Link>
 
     </NavButtonContainerStyles>

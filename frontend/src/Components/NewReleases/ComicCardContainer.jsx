@@ -10,7 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 function ComicCardContainer() {
 
   const [comicIssues, setComicIssues] = useState([]);
-  const [month, setMonth] = useState(new Date().getMonth());
+  const [month, setMonth] = useState("2022-05");
 
   useEffect(() => { getComicIssues(month); },[]);
 
@@ -26,14 +26,23 @@ function ComicCardContainer() {
     setComicIssues(data);
   }
 
+  const monthChangeHandler = (e) => {
+    setMonth(e.target.value);
+    getComicIssues(e.target.value);
+  }
+
   return (
-    <ComicCardContainerStyles>
-      <input type={"month"} value={month}></input>
-      {comicIssues.map((issue) => {
-      return (
-          <ComicCard issue={issue}/>
-      )})}
-     </ComicCardContainerStyles>  
+      <div>
+        <ComicCardContainerStyles>
+          <input type={"month"} onChange={monthChangeHandler}></input>
+        </ComicCardContainerStyles>
+        <ComicCardContainerStyles>
+          {comicIssues.map((issue) => {
+          return (
+              <ComicCard issue={issue}/>
+          )})}
+         </ComicCardContainerStyles>
+      </div>
   );
 }
 
