@@ -40,8 +40,8 @@ public class ComicIssueService {
         return comicIssueRepository.getLatestUnreleasedIssues();
     }
 
-    public Collection<ComicIssue> findFutureComicIssuesFromDate(LocalDate lastPurchaseDate, LocalDate currentDate) {
-        return comicIssueRepository.findFutureComicIssuesFromDate(lastPurchaseDate, currentDate);
+    public Collection<ComicIssue> findFutureComicIssuesFromDate(LocalDate releaseDate) {
+        return comicIssueRepository.findFutureComicIssuesFromDate(releaseDate);
     }
 
     @Transactional

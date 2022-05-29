@@ -28,11 +28,9 @@ public class ComicIssueController {
     }
 
     @GetMapping(path = "date")
-    public Collection<ComicIssue> findFutureComicIssuesFromDate(@RequestParam("lastPurchaseDate")
-                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastPurchaseDate) {
-
-        LocalDate currentDate = LocalDate.now();
-        return comicIssueService.findFutureComicIssuesFromDate(lastPurchaseDate, currentDate);
+    public Collection<ComicIssue> findFutureComicIssuesFromDate(@RequestParam("date")
+                                                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateAndTime) {
+        return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
     }
 
     @GetMapping(path = "latest")
