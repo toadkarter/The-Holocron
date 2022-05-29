@@ -2,12 +2,8 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 
-function InvoiceContainerCard({setComicIssues}) {
-  const [latestIssues, setlatestIssues] = useState([]);
+function InvoiceContainerCard({setComicIssues, latestIssues}) {
   const [maxIssueNumber, setMaxIssueNumber] = useState(0);
-  const [selectedIssue, setSelectedIssue] = useState();
-
-  useEffect(() => { getLatestIssues(); },[]);
 
   const currentObject = {
     title: "title",
@@ -38,12 +34,6 @@ function InvoiceContainerCard({setComicIssues}) {
         <option key={latestIssue.id} value={latestIssue.issueNumber}>
           {latestIssue.title}
         </option>);
-  }
-
-  const getLatestIssues = async () => {
-    const api = await fetch("http://localhost:8080/api/v1/comicissue/latest");
-    const data = await api.json();
-    setlatestIssues(data);
   }
 
   const titleDropDownChangeHandler = (e) => {
