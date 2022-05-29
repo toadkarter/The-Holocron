@@ -22,8 +22,8 @@ public class ComicIssueController {
     }
 
     @RequestMapping(value="/month")
-    public Collection<ComicIssue> getFutureComicIssuesByMonth(@RequestParam(value = "month") int month) {
-        return comicIssueService.getFutureComicIssuesByMonth(month);
+    public Collection<ComicIssue> getFutureComicIssuesByMonth(@RequestParam(value = "month") String monthDate) {
+        return comicIssueService.getFutureComicIssuesByMonth(monthDate);
 
     }
 

@@ -29,8 +29,12 @@ public class ComicIssueService {
         comicIssueRepository.saveAll(scraper.scrapeWiki());
     }
 
-    public Collection<ComicIssue> getFutureComicIssuesByMonth(int month) {
-        YearMonth yearMonth = YearMonth.of(2022, month);
+    public Collection<ComicIssue> getFutureComicIssuesByMonth(String monthDate) {
+        String[] monthDateSplit = monthDate.split("-");
+        int year = Integer.parseInt(monthDateSplit[0]);
+        int month = Integer.parseInt(monthDateSplit[1]);
+
+        YearMonth yearMonth = YearMonth.of(year, month);
         LocalDate firstOfMonth = yearMonth.atDay(1);
         LocalDate lastOfMonth = yearMonth.atEndOfMonth();
         return comicIssueRepository.getFutureComicIssuesByMonth(firstOfMonth, lastOfMonth);

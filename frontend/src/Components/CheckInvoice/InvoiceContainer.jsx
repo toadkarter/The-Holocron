@@ -33,7 +33,7 @@ function InvoiceContainer() {
             <div>
                 <p>Please enter the date of your last comic book purchase.</p>
                 <p>The new comics will be shown below.</p>
-                <input type={"date"} onChange={dateChangeHandler}></input>
+                <input type={"date"} onChange={dateChangeHandler}></input> value={date}
             </div>
             <InvoiceContainerStyles>
                 {comicIssues.map((issue) => {
