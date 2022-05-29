@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import InvoiceContainerCard from './InvoiceContainerCard';
 
 
 function InvoiceContainer() {
+    const [comicIssues, setComicIssues] = useState([]);
+
+
 
 
   return (
       <InvoiceContainerStyles>
-         <InvoiceContainerCard/>
+          <button onClick={() => console.log("We clicking.")}>+</button>
+         <InvoiceContainerCard setComicIssues={{setComicIssues}}/>
       </InvoiceContainerStyles>
   );
 }

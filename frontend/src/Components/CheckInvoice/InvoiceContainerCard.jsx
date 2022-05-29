@@ -1,29 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 
 
-function InvoiceContainerCard() {
+function InvoiceContainerCard({setComicIssues}) {
   const [latestIssues, setlatestIssues] = useState([]);
   const [maxIssueNumber, setMaxIssueNumber] = useState(0);
+  const [selectedIssue, setSelectedIssue] = useState();
+
   useEffect(() => { getLatestIssues(); },[]);
 
+  const currentObject = {
+    title: "title",
+    issueNumber: 0
+  }
+
+  const updateObject = (title, issueNumber) => {
+    currentObject.title = title;
+    currentObject.issueNumber = issueNumber;
+    console.log(currentObject);
+  }
+
+
+  const deleteHandler = () => {
+    console.log("Hello there");
+  }
 
   const generateNumberDropdown = () => {
     const issueNumbers = [...Array(maxIssueNumber).keys()];
-    const issueNumbersOptions = issueNumbers.map((issueNumber) => 
-        <option key={issueNumber+1} value = {issueNumber+1}>
-          {issueNumber+1}
-        </option>)
-    return issueNumbersOptions;
+    return issueNumbers.map((issueNumber) =>
+        <option key={issueNumber + 1} value={issueNumber + 1}>
+          {issueNumber + 1}
+        </option>);
   }
 
   const generateTitleDropdown = () => {
-    const issueTitles = latestIssues.map((latestIssue) => 
-      <option key={latestIssue.id} value = {latestIssue.issueNumber}>
-        {latestIssue.title}
-      </option>)
-    return issueTitles;
+    return latestIssues.map((latestIssue) =>
+        <option key={latestIssue.id} value={latestIssue.issueNumber}>
+          {latestIssue.title}
+        </option>);
   }
 
   const getLatestIssues = async () => {
@@ -32,14 +46,30 @@ function InvoiceContainerCard() {
     setlatestIssues(data);
   }
 
+  const titleDropDownChangeHandler = (e) => {
+    const currentTitleIndex = e.nativeEvent.target.selectedIndex;
+    const currentTitle = e.nativeEvent.target[currentTitleIndex].text;
+    const maxIssueNumber = parseInt(e.target.value);
+    updateObject(currentTitle, maxIssueNumber);
+
+    setMaxIssueNumber(maxIssueNumber);
+  }
+
+  const numberDropdownChangeHandler = (e) => {
+    currentObject.issueNumber = parseInt(e.target.value);
+    console.log(currentObject);
+    // Add option to update state.
+  }
+
   return (
   <InvoiceContainerCardStyled>
-    <select name="Title" onChange={(e)=> {setMaxIssueNumber(parseInt(e.target.value))}}>
+    <select name="Title" onChange={titleDropDownChangeHandler}>
       {generateTitleDropdown()} 
     </select>
-    <select name="IssueNumber">
+    <select name="IssueNumber" onChange={numberDropdownChangeHandler}>
       {generateNumberDropdown()}
     </select>
+    <button onClick={deleteHandler}>Delete</button>
   </InvoiceContainerCardStyled>
   );
 }

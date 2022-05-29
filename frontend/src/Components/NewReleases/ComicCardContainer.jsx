@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 
+// TODO: Add something to help with cycling through months.
+// TODO: Add date to panels.
 function ComicCardContainer() {
 
   const [comicIssues, setComicIssues] = useState([]);
