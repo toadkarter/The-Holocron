@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 
 // This class contains all the resources for the API layer
 @RestController
@@ -29,9 +28,11 @@ public class ComicIssueController {
     }
 
     @GetMapping(path = "date")
-    public Collection<ComicIssue> findFutureComicIssuesFromDate(@RequestParam("date")
-                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateAndTime) {
-        return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
+    public Collection<ComicIssue> findFutureComicIssuesFromDate(@RequestParam("lastPurchaseDate")
+                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastPurchaseDate) {
+
+        LocalDate currentDate = LocalDate.now();
+        return comicIssueService.findFutureComicIssuesFromDate(lastPurchaseDate, currentDate);
     }
 
     @GetMapping(path = "latest")
@@ -43,6 +44,4 @@ public class ComicIssueController {
     public void initFutureComics() throws IOException {
         comicIssueService.initFutureComics();
     }
-
-
 }
