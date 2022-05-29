@@ -2,20 +2,18 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 
-function InvoiceContainerCard({setComicIssues, latestIssues}) {
+function InvoiceContainerCard({comicIssues, setComicIssues, latestIssues}) {
   const [maxIssueNumber, setMaxIssueNumber] = useState(0);
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [currentNumber, setCurrentNumber] = useState(0);
 
-  const currentObject = {
-    title: "title",
-    issueNumber: 0
+
+  const updateTotalCurrentIssues = (currentTitle, currentNumber) => {
+    const currentIssue = {title: currentTitle, issueNumber: currentNumber};
+
+    const updatedIssues = [...comicIssues, currentIssue];
+    setComicIssues(updatedIssues);
   }
-
-  const updateObject = (title, issueNumber) => {
-    currentObject.title = title;
-    currentObject.issueNumber = issueNumber;
-    console.log(currentObject);
-  }
-
 
   const deleteHandler = () => {
     console.log("Hello there");
@@ -40,15 +38,16 @@ function InvoiceContainerCard({setComicIssues, latestIssues}) {
     const currentTitleIndex = e.nativeEvent.target.selectedIndex;
     const currentTitle = e.nativeEvent.target[currentTitleIndex].text;
     const maxIssueNumber = parseInt(e.target.value);
-    updateObject(currentTitle, maxIssueNumber);
+    setCurrentTitle(currentTitle);
+    setCurrentNumber(maxIssueNumber);
+    updateTotalCurrentIssues(currentTitle, currentNumber);
 
     setMaxIssueNumber(maxIssueNumber);
   }
 
   const numberDropdownChangeHandler = (e) => {
-    currentObject.issueNumber = parseInt(e.target.value);
-    console.log(currentObject);
-    // Add option to update state.
+    setCurrentNumber(parseInt(e.target.value));
+    updateTotalCurrentIssues(currentTitle, currentNumber);
   }
 
   return (

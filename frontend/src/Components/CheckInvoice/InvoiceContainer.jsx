@@ -6,8 +6,21 @@ import InvoiceContainerCard from './InvoiceContainerCard';
 function InvoiceContainer() {
     const [comicIssues, setComicIssues] = useState([]);
     const [latestIssues, setLatestIssues] = useState([]);
+    const [invoiceCards, setInvoiceCards] = useState([]);
 
     useEffect(() => { getLatestIssues(); },[]);
+
+    const drawInvoiceCards = () => {
+
+        const invoiceContainerCard =
+            <InvoiceContainerCard
+                comicIssues = {comicIssues}
+                setComicIssues={setComicIssues}
+                latestIssues = {latestIssues}
+            />
+
+        setInvoiceCards([...invoiceCards, invoiceContainerCard])
+    }
 
     const getLatestIssues = async () => {
         const api = await fetch("http://localhost:8080/api/v1/comicissue/latest");
@@ -17,11 +30,8 @@ function InvoiceContainer() {
 
   return (
       <InvoiceContainerStyles>
-          <button onClick={() => console.log("We clicking.")}>+</button>
-         <InvoiceContainerCard
-             setComicIssues={setComicIssues}
-             latestIssues = {latestIssues}
-         />
+          <button onClick={drawInvoiceCards}>+</button>
+          <div>{invoiceCards}</div>
       </InvoiceContainerStyles>
   );
 }
