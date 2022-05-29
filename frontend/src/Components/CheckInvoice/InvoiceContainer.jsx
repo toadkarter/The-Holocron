@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import InvoiceContainerCard from './InvoiceContainerCard';
+import {uniqueId} from "@splidejs/splide/src/js/utils";
 
 function InvoiceContainer() {
     const [comicIssues, setComicIssues] = useState([]);
@@ -12,26 +13,32 @@ function InvoiceContainer() {
 
     const drawInvoiceCards = () => {
 
+        const uniqueId = Math.random();
         const invoiceContainerCard =
             <InvoiceContainerCard
+                key = {uniqueId}
+                uniqueId = {uniqueId}
                 comicIssues = {comicIssues}
                 setComicIssues={setComicIssues}
                 latestIssues = {latestIssues}
+                invoiceCards = {invoiceCards}
+                setInvoiceCards = {setInvoiceCards}
             />
 
         setInvoiceCards([...invoiceCards, invoiceContainerCard])
+        console.log(invoiceCards);
     }
 
     const getLatestIssues = async () => {
         const api = await fetch("http://localhost:8080/api/v1/comicissue/latest");
         const data = await api.json();
-        setLatestIssues(data);
+        setLatestIssues(data)
     }
 
   return (
       <InvoiceContainerStyles>
           <button onClick={drawInvoiceCards}>+</button>
-          <div>{invoiceCards}</div>
+          {invoiceCards}
       </InvoiceContainerStyles>
   );
 }

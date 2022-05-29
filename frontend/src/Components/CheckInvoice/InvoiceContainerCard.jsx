@@ -2,11 +2,16 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 
-function InvoiceContainerCard({comicIssues, setComicIssues, latestIssues}) {
+function InvoiceContainerCard({uniqueId, comicIssues,
+                                setComicIssues,
+                                latestIssues,
+                                invoiceCards,
+                                setInvoiceCards}) {
+
+
   const [maxIssueNumber, setMaxIssueNumber] = useState(0);
   const [currentTitle, setCurrentTitle] = useState("");
   const [currentNumber, setCurrentNumber] = useState(0);
-
 
   const updateTotalCurrentIssues = (currentTitle, currentNumber) => {
     const currentIssue = {title: currentTitle, issueNumber: currentNumber};
@@ -15,8 +20,15 @@ function InvoiceContainerCard({comicIssues, setComicIssues, latestIssues}) {
     setComicIssues(updatedIssues);
   }
 
-  const deleteHandler = () => {
-    console.log("Hello there");
+  const deleteHandler = (e) => {
+    const currentId = e.target.value;
+    console.log(currentId);
+    console.log(invoiceCards);
+    setInvoiceCards(invoiceCards.filter((card) => card.key !== currentId));
+
+    // console.log(uniqueId)
+    // console.log(invoiceCards)
+    // setInvoiceCards(invoiceCards.filter((el) => el.uniqueId !== invoiceCards.id));
   }
 
   const generateNumberDropdown = () => {
@@ -53,12 +65,12 @@ function InvoiceContainerCard({comicIssues, setComicIssues, latestIssues}) {
   return (
   <InvoiceContainerCardStyled>
     <select name="Title" onChange={titleDropDownChangeHandler}>
-      {generateTitleDropdown()} 
+      {generateTitleDropdown()}
     </select>
     <select name="IssueNumber" onChange={numberDropdownChangeHandler}>
       {generateNumberDropdown()}
     </select>
-    <button onClick={deleteHandler}>Delete</button>
+    <button onClick={deleteHandler} value={uniqueId}>Delete</button>
   </InvoiceContainerCardStyled>
   );
 }
