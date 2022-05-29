@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function Logo() {
   return (
       <LogoContainer>
-        <img src={require('../Assets/cube.png')} alt="cube"/>
+        <img src={require('../../Assets/cube.png')} alt="cube"/>
         <div>
             <p style={{'marginBottom': '-0.5rem'}}>The</p>
             <p style={{'marginTop': '-0.5rem'}}><b>Holocron.</b></p>

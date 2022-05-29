@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ComicCardContainer from './ComicCardContainer';
-import InvoiceContainer from './InvoiceContainer';
+import ComicCardContainer from './NewReleases/ComicCardContainer';
+import InvoiceContainer from './CheckInvoice/InvoiceContainer';
 import PageHeader from './PageHeader';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
