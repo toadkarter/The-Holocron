@@ -41,7 +41,8 @@ public class ComicIssueService {
     }
 
     public Collection<ComicIssue> findFutureComicIssuesFromDate(LocalDate releaseDate) {
-        return comicIssueRepository.findFutureComicIssuesFromDate(releaseDate);
+        LocalDate currentDate = LocalDate.now();
+        return comicIssueRepository.findFutureComicIssuesFromDate(releaseDate, currentDate);
     }
 
     @Transactional

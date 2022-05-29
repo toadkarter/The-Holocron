@@ -16,10 +16,11 @@ public interface ComicIssueRepository extends JpaRepository<ComicIssue, Long> {
 
     @Query(value = "SELECT * " +
             "FROM starwars.comic_issue " +
-            "WHERE release_date > :releaseDate " +
+            "WHERE release_date > :releaseDate AND release_date < :currentDate " +
             "ORDER BY release_date",
             nativeQuery = true)
-    Collection<ComicIssue> findFutureComicIssuesFromDate(@Param("releaseDate") LocalDate releaseDate);
+    Collection<ComicIssue> findFutureComicIssuesFromDate(@Param("releaseDate") LocalDate releaseDate,
+                                                         @Param("currentDate") LocalDate currentDate);
 
 
     @Query(value = "SELECT * " +
