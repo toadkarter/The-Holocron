@@ -2,8 +2,7 @@ import React from 'react';
 import ComicCard from './ComicCard';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 // TODO: Add something to help with cycling through months.
 // TODO: Add date to panels.
@@ -16,8 +15,6 @@ function ComicCardContainer() {
   });
 
   useEffect(() => { getComicIssues(month); },[]);
-
-
 
   const getComicIssues = async (month) => {
     const api = await fetch(`http://localhost:8080/api/v1/comicissue/month?month=${month}`);
@@ -42,7 +39,8 @@ function ComicCardContainer() {
           <input type={"month"} onChange={monthChangeHandler} value={month}></input>
         </ComicCardContainerStyles>
         <ComicCardContainerStyles>
-          {comicIssues.map((issue) => {
+          {
+            comicIssues.map((issue) => {
           return (
               <ComicCard issue={issue}/>
           )})}
@@ -53,9 +51,11 @@ function ComicCardContainer() {
 
 // Note: Consider making this one of those slidy things
 const ComicCardContainerStyles = styled.div`
+    margin: 2%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 `
 
 export default ComicCardContainer;

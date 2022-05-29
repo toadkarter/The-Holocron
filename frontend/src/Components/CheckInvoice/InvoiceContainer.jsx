@@ -30,11 +30,11 @@ function InvoiceContainer() {
 
     return (
         <div>
-            <div>
+            <HelperText>
                 <p>Please enter the date of your last comic book purchase.</p>
                 <p>The new comics will be shown below.</p>
-                <input type={"date"} onChange={dateChangeHandler}></input> value={date}
-            </div>
+                <input type={"date"} onChange={dateChangeHandler}></input>
+            </HelperText>
             <InvoiceContainerStyles>
                 {comicIssues.map((issue) => {
                     return (
@@ -47,11 +47,20 @@ function InvoiceContainer() {
 
 // Note: Consider making this one of those slidy things
 
+const HelperText = styled.div`
+  margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
 const InvoiceContainerStyles = styled.div`
-    margin: 0, auto;
+    margin: 2%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 `
 
 export default InvoiceContainer;

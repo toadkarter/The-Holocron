@@ -21,8 +21,6 @@ function InvoiceContainerCard({uniqueId, comicIssues,
 
   const deleteHandler = (e) => {
     const currentId = e.target.value;
-    console.log(invoiceCards);
-    console.log(currentId);
 
     setInvoiceCards(invoiceCards.filter((card) => card.key !== currentId));
 
