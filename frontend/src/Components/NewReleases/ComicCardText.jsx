@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function ComicCardText(props) {
-  
-  const issue = props.issue;
-
+function ComicCardText({issue}) {
   return (
       <ComicCardTextStyles>
           <HeaderStyles>{issue.title}</HeaderStyles>
-          <p>Issue #{issue.number}</p>
+          <p>Issue #{issue.issueNumber}</p>
           <SubHeaderStyles>by {issue.author}</SubHeaderStyles>
-          <p>{issue.date}</p>
+          <p>{issue.releaseDate}</p>
       </ComicCardTextStyles>  
   );
 }

@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ComicCardText from './ComicCardText';
 
-function ComicCard(props) {
-
-  const issue = props.issue;
+function ComicCard({issue}) {
 
   return (
         <ComicCardStyles>
@@ -30,7 +28,5 @@ const ComicCardStyles = styled.div`
     }
 
 `
-
-
 
 export default ComicCard;

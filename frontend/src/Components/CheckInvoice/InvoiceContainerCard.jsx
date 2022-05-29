@@ -15,15 +15,15 @@ function InvoiceContainerCard({uniqueId, comicIssues,
 
   const updateTotalCurrentIssues = (currentTitle, currentNumber) => {
     const currentIssue = {title: currentTitle, issueNumber: currentNumber};
-
     const updatedIssues = [...comicIssues, currentIssue];
     setComicIssues(updatedIssues);
   }
 
   const deleteHandler = (e) => {
     const currentId = e.target.value;
-    console.log(currentId);
     console.log(invoiceCards);
+    console.log(currentId);
+
     setInvoiceCards(invoiceCards.filter((card) => card.key !== currentId));
 
     // console.log(uniqueId)
