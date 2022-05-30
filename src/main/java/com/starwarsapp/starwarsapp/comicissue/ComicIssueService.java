@@ -37,16 +37,16 @@ public class ComicIssueService {
         YearMonth yearMonth = YearMonth.of(year, month);
         LocalDate firstOfMonth = yearMonth.atDay(1);
         LocalDate lastOfMonth = yearMonth.atEndOfMonth();
-        return comicIssueRepository.getFutureComicIssuesByMonth(firstOfMonth, lastOfMonth);
+        return comicIssueRepository.findComicIssuesByReleaseDateBetween(firstOfMonth, lastOfMonth);
     }
 
-    public Collection<ComicIssue> getLatestUnreleasedIssues() {
-        return comicIssueRepository.getLatestUnreleasedIssues();
-    }
+//    public Collection<ComicIssue> getLatestUnreleasedIssues() {
+//        return comicIssueRepository.getLatestUnreleasedIssues();
+//    }
 
     public Collection<ComicIssue> findFutureComicIssuesFromDate(LocalDate releaseDate) {
         LocalDate currentDate = LocalDate.now();
-        return comicIssueRepository.findFutureComicIssuesFromDate(releaseDate, currentDate);
+        return comicIssueRepository.findComicIssuesByReleaseDateBetween(releaseDate, currentDate);
     }
 
     @Transactional

@@ -33,10 +33,10 @@ public class ComicIssueController {
         return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
     }
 
-    @GetMapping(path = "latest")
-    public Collection<ComicIssue> getLatestUnreleasedIssues() {
-        return comicIssueService.getLatestUnreleasedIssues();
-    }
+//    @GetMapping(path = "latest")
+//    public Collection<ComicIssue> getLatestUnreleasedIssues() {
+//        return comicIssueService.getLatestUnreleasedIssues();
+//    }
 
     @RequestMapping(path = "initfuturecomics")
     public void initFutureComics() throws IOException {

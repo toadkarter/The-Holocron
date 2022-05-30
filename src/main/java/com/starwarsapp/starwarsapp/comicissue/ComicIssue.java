@@ -20,7 +20,7 @@ public class ComicIssue {
             generator = "comic_issue_sequence"
     )
 
-    private int id;
+    private Long id;
     private String title;
     private int issueNumber;
     private String author;
@@ -43,7 +43,7 @@ public class ComicIssue {
     }
 
     // Full constructor (for user input)
-    public ComicIssue(int id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
+    public ComicIssue(Long id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
         this.id = id;
         this.title = title;
         this.issueNumber = issueNumber;
@@ -53,11 +53,11 @@ public class ComicIssue {
         this.inCollection = inCollection;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,42 +69,14 @@ public class ComicIssue {
         this.title = title;
     }
 
-    public int getIssueNumber() {
-        return issueNumber;
-    }
+    public int getIssueNumber() { return issueNumber; }
 
     public void setIssueNumber(int number) {
         this.issueNumber = number;
     }
 
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getAuthor() { return author; }
-
     public void setAuthor(String author) { this.author = author; }
 
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String image) {
-        this.imageUrl = imageUrl;
-    }
-
-    public boolean isInCollection() {
-        return inCollection;
-    }
-
-    public void setInCollection(boolean inCollection) {
-        this.inCollection = inCollection;
-    }
 
 
 }
