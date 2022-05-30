@@ -31,10 +31,4 @@ public class ComicIssueController {
                                                                 @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateAndTime) {
         return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
     }
-
-    // Move this out of the public API, don't want people to run this.
-    @RequestMapping(path = "initfuturecomics")
-    public void initFutureComics() throws IOException {
-        comicIssueService.initFutureComics();
-    }
 }

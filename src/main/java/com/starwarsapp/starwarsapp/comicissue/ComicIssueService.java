@@ -2,6 +2,8 @@ package com.starwarsapp.starwarsapp.comicissue;
 
 import com.starwarsapp.starwarsapp.wikiscraper.Scraper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -24,7 +26,8 @@ public class ComicIssueService {
         this.scraper = scraper;
     }
 
-    // TODO: Add error checking to see if the table already contains entries
+    // This will run as soon as the application starts.
+    @EventListener(ApplicationReadyEvent.class)
     public void initFutureComics() throws IOException {
         Collection<ComicIssue> comics = scraper.scrapeWiki();
         System.out.println(comics);
