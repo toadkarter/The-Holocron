@@ -37,6 +37,7 @@ public class ComicIssueService {
         YearMonth yearMonth = YearMonth.of(year, month);
         LocalDate firstOfMonth = yearMonth.atDay(1);
         LocalDate lastOfMonth = yearMonth.atEndOfMonth();
+
         return comicIssueRepository.findComicIssuesByReleaseDateBetween(firstOfMonth, lastOfMonth);
     }
 
@@ -49,14 +50,4 @@ public class ComicIssueService {
         return comicIssueRepository.findComicIssuesByReleaseDateBetween(releaseDate, currentDate);
     }
 
-    @Transactional
-    public void updateComicIssue(Long comicIssueId, String title, int number, String author) {
-        ComicIssue comicIssue = comicIssueRepository.findById(comicIssueId).orElseThrow(
-                () -> new IllegalStateException(
-                        "Comic Issue with Id " + comicIssueId + " does not exist"
-                ));
-        comicIssue.setTitle(title);
-        comicIssue.setIssueNumber(number);
-        comicIssue.setAuthor(author);
-    }
 }

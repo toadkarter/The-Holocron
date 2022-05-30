@@ -45,7 +45,7 @@ public class FutureIssueListGenerator {
                 continue;
             }
 
-            futureComicIssues.add(new ComicIssue(title.toString(), issueNumber, author, releaseDate, imageUrl, false));
+            futureComicIssues.add(new ComicIssue(title.toString(), issueNumber, author, releaseDate, imageUrl));
         }
 
         return futureComicIssues;

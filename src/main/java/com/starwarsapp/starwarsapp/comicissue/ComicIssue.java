@@ -26,31 +26,28 @@ public class ComicIssue {
     private String author;
     private LocalDate releaseDate;
     private String imageUrl;
-    private boolean inCollection;
 
     // Null constructor
     public ComicIssue() {
     }
 
     // Constructor without id (for database generation)
-    public ComicIssue(String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
+    public ComicIssue(String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl) {
         this.title = title;
         this.issueNumber = issueNumber;
         this.author = author;
         this.releaseDate = releaseDate;
         this.imageUrl = imageUrl;
-        this.inCollection = inCollection;
     }
 
     // Full constructor (for user input)
-    public ComicIssue(Long id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl, boolean inCollection) {
+    public ComicIssue(Long id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl) {
         this.id = id;
         this.title = title;
         this.issueNumber = issueNumber;
         this.author = author;
         this.releaseDate = releaseDate;
         this.imageUrl = imageUrl;
-        this.inCollection = inCollection;
     }
 
     public Long getId() {

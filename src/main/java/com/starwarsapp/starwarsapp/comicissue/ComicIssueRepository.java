@@ -12,8 +12,5 @@ import java.util.Collection;
 // specify the type of the entity, and the type of the ID.
 @Repository
 public interface ComicIssueRepository extends JpaRepository<ComicIssue, Long> {
-
     Collection<ComicIssue> findComicIssuesByReleaseDateBetween(LocalDate startDate, LocalDate endDate);
-
-
 }
