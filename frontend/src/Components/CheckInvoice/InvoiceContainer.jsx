@@ -26,7 +26,9 @@ function InvoiceContainer() {
     }
 
     const displayComicIssues = () => {
-        if (comicIssues.length === 0) {
+        if (date === new Date().toISOString().split("T")[0]) {
+            return <p></p>
+        } else if (comicIssues.length === 0) {
             return <p>You are up to date - no comic issues released since {date}.</p>
         } else {
             return comicIssues.map((issue) => { return (<ComicCard issue={issue}/>)})
