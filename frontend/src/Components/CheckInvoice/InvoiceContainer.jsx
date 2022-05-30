@@ -17,15 +17,20 @@ function InvoiceContainer() {
         // This will create a json file from the api call
         const data = await api.json();
 
-        localStorage.setItem('comicIssues', JSON.stringify(data));
-
-        console.log(data.length)
         // This will put in the relevant data from the JSON file into the popular variable.
         setComicIssues(data);
     }
 
     const dateChangeHandler = (e) => {
         setDate(e.target.value);
+    }
+
+    const displayComicIssues = () => {
+        if (comicIssues.length === 0) {
+            return <p>You are up to date - no comic issues released since {date}.</p>
+        } else {
+            return comicIssues.map((issue) => { return (<ComicCard issue={issue}/>)})
+        }
     }
 
     return (
@@ -36,10 +41,7 @@ function InvoiceContainer() {
                 <input type={"date"} onChange={dateChangeHandler}></input>
             </HelperText>
             <InvoiceContainerStyles>
-                {comicIssues.map((issue) => {
-                    return (
-                        <ComicCard issue={issue}/>
-                    )})}
+                {displayComicIssues()}
             </InvoiceContainerStyles>
         </div>
     );

@@ -22,8 +22,6 @@ function ComicCardContainer() {
     // This will create a json file from the api call
     const data = await api.json();
 
-    localStorage.setItem('comicIssues', JSON.stringify(data));
-
     // This will put in the relevant data from the JSON file into the popular variable.
     setComicIssues(data);
   }
@@ -32,17 +30,21 @@ function ComicCardContainer() {
     setMonth(e.target.value);
   }
 
+  const displayComicIssues = () => {
+      if (comicIssues.length === 0) {
+          return <p>Sorry, there is no information about this month's releases.</p>
+      } else {
+          return comicIssues.map((issue) => { return (<ComicCard issue={issue}/>)})
+      }
+  }
+
   return (
       <div>
         <ComicCardContainerStyles>
           <input type={"month"} onChange={monthChangeHandler} value={month}></input>
         </ComicCardContainerStyles>
         <ComicCardContainerStyles>
-          {
-            comicIssues.map((issue) => {
-          return (
-              <ComicCard issue={issue}/>
-          )})}
+            {displayComicIssues()}
          </ComicCardContainerStyles>
       </div>
   );
