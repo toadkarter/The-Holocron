@@ -26,7 +26,9 @@ public class ComicIssueService {
 
     // TODO: Add error checking to see if the table already contains entries
     public void initFutureComics() throws IOException {
-        comicIssueRepository.saveAll(scraper.scrapeWiki());
+        Collection<ComicIssue> comics = scraper.scrapeWiki();
+        System.out.println(comics);
+        comicIssueRepository.saveAll(comics);
     }
 
     public Collection<ComicIssue> getFutureComicIssuesByMonth(String monthDate) {

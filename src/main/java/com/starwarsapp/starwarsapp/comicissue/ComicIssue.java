@@ -40,16 +40,6 @@ public class ComicIssue {
         this.imageUrl = imageUrl;
     }
 
-    // Full constructor (for user input)
-    public ComicIssue(Long id, String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl) {
-        this.id = id;
-        this.title = title;
-        this.issueNumber = issueNumber;
-        this.author = author;
-        this.releaseDate = releaseDate;
-        this.imageUrl = imageUrl;
-    }
-
     public Long getId() {
         return id;
     }
@@ -66,14 +56,35 @@ public class ComicIssue {
         this.title = title;
     }
 
-    public int getIssueNumber() { return issueNumber; }
-
-    public void setIssueNumber(int number) {
-        this.issueNumber = number;
+    public int getIssueNumber() {
+        return issueNumber;
     }
 
-    public void setAuthor(String author) { this.author = author; }
+    public void setIssueNumber(int issueNumber) {
+        this.issueNumber = issueNumber;
+    }
 
+    public String getAuthor() {
+        return author;
+    }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

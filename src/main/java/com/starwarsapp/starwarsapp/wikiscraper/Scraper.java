@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 @Component
@@ -20,7 +21,7 @@ public class Scraper {
         this.futureIssueListGenerator = futureIssueListGenerator;
     }
 
-    public List<ComicIssue> scrapeWiki() throws IOException {
+    public Collection<ComicIssue> scrapeWiki() throws IOException {
         Document document = Jsoup.connect(url).get();
         Elements comics = document.getElementsByClass("comic");
         return futureIssueListGenerator.getListOfFutureIssues(comics);

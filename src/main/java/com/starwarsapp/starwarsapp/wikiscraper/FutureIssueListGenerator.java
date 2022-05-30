@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Component
@@ -18,9 +19,9 @@ public class FutureIssueListGenerator {
 
     private final String baseUrl = "https://starwars.fandom.com";
 
-    public List<ComicIssue> getListOfFutureIssues(Elements comics) {
+    public Collection<ComicIssue> getListOfFutureIssues(Elements comics) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        List<ComicIssue> futureComicIssues = new ArrayList<>();
+        Collection<ComicIssue> futureComicIssues = new ArrayList<>();
 
         for (Element comic: comics) {
             Elements columns = comic.select("td");
@@ -44,7 +45,6 @@ public class FutureIssueListGenerator {
                 System.out.println("Can't get comic information");
                 continue;
             }
-
             futureComicIssues.add(new ComicIssue(title.toString(), issueNumber, author, releaseDate, imageUrl));
         }
 
@@ -56,7 +56,6 @@ public class FutureIssueListGenerator {
     }
 
     private void deleteIssueNumberFromTitle(StringBuilder title) {
-
         title.delete(title.lastIndexOf(" "), title.length());
     }
 
@@ -66,7 +65,7 @@ public class FutureIssueListGenerator {
 
     private void removeCross(StringBuilder title) {
         if (title.toString().contains("†")) {
-            title.deleteCharAt(title.toString().indexOf("†"));
+            title.delete(title.toString().indexOf("†") - 1, title.toString().length());
         }
     }
 

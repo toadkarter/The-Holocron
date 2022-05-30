@@ -24,7 +24,6 @@ public class ComicIssueController {
     @RequestMapping(value="/month")
     public Collection<ComicIssue> getFutureComicIssuesByMonth(@RequestParam(value = "month") String monthDate) {
         return comicIssueService.getFutureComicIssuesByMonth(monthDate);
-
     }
 
     @GetMapping(path = "date")
@@ -32,11 +31,6 @@ public class ComicIssueController {
                                                                 @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateAndTime) {
         return comicIssueService.findFutureComicIssuesFromDate(dateAndTime);
     }
-
-//    @GetMapping(path = "latest")
-//    public Collection<ComicIssue> getLatestUnreleasedIssues() {
-//        return comicIssueService.getLatestUnreleasedIssues();
-//    }
 
     // Move this out of the public API, don't want people to run this.
     @RequestMapping(path = "initfuturecomics")
