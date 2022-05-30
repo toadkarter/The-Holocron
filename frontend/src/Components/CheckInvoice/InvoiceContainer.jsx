@@ -39,7 +39,7 @@ function InvoiceContainer() {
         <div>
             <HelperText>
                 <p>Please enter the date of your last comic book purchase.</p>
-                <p>The new comics will be shown below.</p>
+                <p>The comics you need to catch up on will be shown below.</p>
                 <input type={"date"} onChange={dateChangeHandler}></input>
             </HelperText>
             <InvoiceContainerStyles>
@@ -55,6 +55,9 @@ const HelperText = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  input {
+    margin-top: 2%;
+  }
 `
 
 const InvoiceContainerStyles = styled.div`
