@@ -3,12 +3,12 @@
 
 *Note: The Holocron currently only supports Chrome browser. Other browser support is currently in development.*
 
-
 ### **What is The Holocron?**
 ---
 
 The Holocron is a web application that shows the user the latest Star Wars comic releases. It also allows the user to check which comics they need to catch up on based on the date that the user last bought and/or read a Star Wars comic. 
 
+You can access The Holocron [at this link](http://34.247.107.150:8080/).
 
 ### **How do I use The Holocron?**
 ---
