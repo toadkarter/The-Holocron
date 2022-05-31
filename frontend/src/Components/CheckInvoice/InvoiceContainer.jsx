@@ -12,7 +12,7 @@ function InvoiceContainer() {
     useEffect(() => { getComicIssues(date); },[date]);
 
     const getComicIssues = async (date) => {
-        const api = await fetch(`http://raspberrypilite.local:8080/api/v1/comicissue/date?date=${date}`);
+        const api = await fetch(`https://the-holocron.herokuapp.com/api/v1/comicissue/date?date=${date}`);
 
         // This will create a json file from the api call
         const data = await api.json();
