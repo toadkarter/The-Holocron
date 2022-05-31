@@ -39,9 +39,9 @@ The front end of the website was created with the help of the React library. Thi
 
 The back end of the website was created with the help of the SpringBoot framework. This framework was chosen because of the wealth of built-in features, such as as the Apache Tomcat server, database integration using JPA and front-end integration.
 
-### **3. H2 Database**
+### **3. MariaDB**
 
-An external database was initially considered. However, due to the fact that the data was only ever going to be written to when scraping occurs, which is a rare occurence, and also due to the fact that the application would constantly be running on the server, and as such persistence was not a huge concern, an in-memory database was finally chosen.
+My ultimate goal for this project was to be able to host this application on my Raspberry Pi, and to have it accessible on my home network. I already had MariaDB installed on my Raspberry Pi, and as such decided to use this database for this project. However, due to the fact that JPA is used throughout, the database can be easily swapped out by making the relevant edits in the "application.properties" file. 
 
 ### **4. JSoup**
 
