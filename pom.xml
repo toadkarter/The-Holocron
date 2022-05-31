@@ -56,7 +56,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>holocron</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
