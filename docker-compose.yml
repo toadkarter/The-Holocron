@@ -1,0 +1,16 @@
+version: "3"
+services:
+    web:
+        build: .
+        ports:
+            - 8080:8080
+
+    db:
+        image: mariadb
+        ports:
+            - 6666:3306
+        environment:
+            MARIADB_ROOT_PASSWORD: root
+        volumes:
+            - ./sql/:/docker-entrypoint-initdb.d/:ro
+
