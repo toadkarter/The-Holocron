@@ -4,6 +4,8 @@ import com.starwarsapp.starwarsapp.wikiscraper.Scraper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,6 +16,7 @@ import java.util.Collection;
 
 // This class contains the logic for the service layer
 @Service // Tells Spring Boot that this is a Bean. Could easily be called a Component if we wanted.
+@EnableScheduling
 public class ComicIssueService {
 
     // Creating reference to repository
@@ -26,11 +29,17 @@ public class ComicIssueService {
         this.scraper = scraper;
     }
 
-    // This will run as soon as the application starts.
+//     This will run as soon as the application starts.
     @EventListener(ApplicationReadyEvent.class)
     public void initFutureComics() throws IOException {
         Collection<ComicIssue> comics = scraper.scrapeWiki();
-        System.out.println(comics);
+        comicIssueRepository.saveAll(comics);
+    }
+
+    @Scheduled(cron = "@midnight")
+    public void updateFutureComics() throws IOException {
+        Collection<ComicIssue> comics = scraper.scrapeWiki();
+        comicIssueRepository.deleteAll();
         comicIssueRepository.saveAll(comics);
     }
 
