@@ -31,6 +31,7 @@ public class FutureIssueListGenerator {
 
             int issueNumber = -1;
             LocalDate releaseDate = null;
+            String linkUrl = null;
             String imageUrl = null;
 
             String author = columns.eq(3).text();
@@ -39,13 +40,14 @@ public class FutureIssueListGenerator {
             try {
                 issueNumber = getIssueNumber(title);
                 releaseDate = getReleaseDate(columns, formatter);
-                imageUrl = getImageUrl(columns.eq(2));
+                linkUrl = getLinkUrl(columns.eq(2));
+                imageUrl = getImageUrl(linkUrl);
                 deleteIssueNumberFromTitle(title);
             } catch (Exception e) {
                 System.out.println("Can't get comic information");
                 continue;
             }
-            futureComicIssues.add(new ComicIssue(title.toString(), issueNumber, author, releaseDate, imageUrl));
+            futureComicIssues.add(new ComicIssue(title.toString(), issueNumber, author, releaseDate, linkUrl, imageUrl));
         }
 
         return futureComicIssues;
@@ -69,9 +71,12 @@ public class FutureIssueListGenerator {
         }
     }
 
-    private String getImageUrl(Elements comicInfo) throws IOException {
-        String comicUrl = baseUrl + comicInfo.select("a").attr("href");
-        Document comicPage = Jsoup.connect(comicUrl).get();
+    private String getLinkUrl(Elements comicInfo) throws IOException {
+        return baseUrl + comicInfo.select("a").attr("href");
+    }
+
+    private String getImageUrl(String linkUrl) throws IOException {
+        Document comicPage = Jsoup.connect(linkUrl).get();
         String rawImageUrl = comicPage.select("figure").select("a").attr("href");
         return rawImageUrl.substring(0, rawImageUrl.indexOf("/revision"));
     }

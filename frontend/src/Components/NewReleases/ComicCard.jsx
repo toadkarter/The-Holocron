@@ -5,18 +5,21 @@ import ComicCardText from './ComicCardText';
 function ComicCard({issue}) {
 
   return (
-        <ComicCardStyles>
+        <ComicCardStyles href={issue.linkUrl}>
           <div>
             {/* Consider setting the fetching of this to be async */}
-            <img src={issue.imageUrl} alt="cube"/>
+            <img src={issue.imageUrl} alt="comic" target="_blank" rel="noreferrer"/>
             <ComicCardText issue={issue}/>
           </div>
         </ComicCardStyles>       
   );
 }
 
-const ComicCardStyles = styled.div`
-    margin: 1rem;
+const ComicCardStyles = styled.a`
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 1rem;
     div {
       position: relative;
     }

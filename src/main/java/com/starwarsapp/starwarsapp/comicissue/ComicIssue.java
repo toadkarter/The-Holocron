@@ -25,6 +25,7 @@ public class ComicIssue {
     private int issueNumber;
     private String author;
     private LocalDate releaseDate;
+    private String linkUrl;
     private String imageUrl;
 
     // Null constructor
@@ -32,11 +33,12 @@ public class ComicIssue {
     }
 
     // Constructor without id (for database generation)
-    public ComicIssue(String title, int issueNumber, String author, LocalDate releaseDate, String imageUrl) {
+    public ComicIssue(String title, int issueNumber, String author, LocalDate releaseDate, String linkUrl, String imageUrl) {
         this.title = title;
         this.issueNumber = issueNumber;
         this.author = author;
         this.releaseDate = releaseDate;
+        this.linkUrl = linkUrl;
         this.imageUrl = imageUrl;
     }
 
@@ -79,6 +81,10 @@ public class ComicIssue {
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    public String getLinkUrl() { return linkUrl; }
+
+    public void setLinkUrl(String linkUrl) { this.linkUrl = linkUrl; }
 
     public String getImageUrl() {
         return imageUrl;

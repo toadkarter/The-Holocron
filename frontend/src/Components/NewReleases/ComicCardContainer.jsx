@@ -17,7 +17,7 @@ function ComicCardContainer() {
   useEffect(() => { getComicIssues(month); },[month]);
 
   const getComicIssues = async (month) => {
-    const api = await fetch(`http://${window.location.host}/api/v1/comicissue/month?month=${month}`);
+    const api = await fetch(`http://localhost:8080/api/v1/comicissue/month?month=${month}`);
 
 
     // This will create a json file from the api call
